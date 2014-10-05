@@ -4,13 +4,50 @@
     <script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
     <link rel='stylesheet' type='text/css' href='style.css'>
+    <script>
+    $(function(){
+      if(navigator.onLine){
+        $("#status").addClass("online");
+      }
+});
+</script>
+<style>
+  #status {
+  position : fixed;
+  width: 100%;
+  font : bold 1em sans-serif;
+  color: #FFF:
+  padding : 0.5em
+}
+
+#log {
+  padding: 2.5em 0.5em 0.5em;
+  font: 1em sans-serif;
+}
+
+.online {
+  background: green;
+}
+
+.offline {
+  background: red;
+}
+</style>
   </head>
   <body>
     <div id='messagesDiv'></div>
     <input type='text' id='nameInput' placeholder='Name'>
     <input type='text' id='messageInput' placeholder='Message'>
+    <object width="250" height="40" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="gsSong4147144853" name="gsSong4147144853"><param name="movie" value="http://grooveshark.com/songWidget.swf" /><param name="wmode" value="window" /><param name="allowScriptAccess" value="always" /><param name="flashvars" value="hostname=grooveshark.com&songID=41471448&style=metal&p=0" /><object type="application/x-shockwave-flash" data="http://grooveshark.com/songWidget.swf" width="250" height="40"><param name="wmode" value="window" /><param name="allowScriptAccess" value="always" /><param name="flashvars" value="hostname=grooveshark.com&songID=41471448&style=metal&p=0" /><span><a href="http://grooveshark.com/search/song?q=Kiesza%20Hideaway" title="Hideaway by Kiesza on Grooveshark">Hideaway by Kiesza on Grooveshark</a></span></object></object>
+    <div id="status"></div>
+<div id="log"></div>
+<p>This is a test</p>
     <script>
-      var messagesRef = new Firebase('https://hw0sxq38bbn.firebaseio-demo.com/');
+      var messagesRef = new Firebase('https://firehub.firebaseio.com');
+      messagesRef.authWithOAuthPopup("github", function(error, authData) {},{
+          remember: "sessionOnly",
+  scope: "user,gist"
+      });
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
           var name = $('#nameInput').val();
@@ -24,7 +61,7 @@
         displayChatMessage(message.name, message.text);
       });
       function displayChatMessage(name, text) {
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        $('<div/>').text(text).prepend($('<em/>').text(name+" ")).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
     </script>

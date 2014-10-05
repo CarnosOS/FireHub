@@ -5,7 +5,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 700px;
-  background-color: #f8f8f8;
+  background-color: teal;
   font-size: 24px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #424547;
@@ -16,13 +16,13 @@ h1 {
   font-size: 36px;
   font-weight: bold;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #424547;
+  color: #000000;
 }
 
 h3 {
   font-size: 24px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #424547;
+  color: red;
 }
 
 p {
@@ -42,17 +42,22 @@ input[type=text] {
 em {
   font-style: normal;
   font-weight: bold;
-  color: black;
+  width: 200px;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #f52f0c;
+  
 }
 
 /* Chat */
 #messagesDiv {
-  background-color: white;
+  background-color: #fAf8f8;
   overflow: auto;
   height: 330px;
   width: 100%;
   padding: 10px;
-  border: 8px solid #424547;
+  border: 1px solid #fAf8f8;
+  border-radius: 8px;
   margin-bottom: 5px;
   text-align: left;
 }
